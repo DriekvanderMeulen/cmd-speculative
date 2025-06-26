@@ -23,11 +23,23 @@
 
 	// Optional gradient to override text colors
 	export let textGradient: string | null = null
+	
+	// Optional background gradient colors
+	export let bgGradientColors: Array<string> | null = null
 
 	// Initialize description with first description from array
 	export let currentMaterialDescription: string = materialDescriptions[0] ?? ''
 
 	$: cubeScrollProgress = Math.min(scrollY / innerHeight, 1)
+
+	// Build dynamic background gradient
+	$: dynamicBackgroundStyle = bgGradientColors && bgGradientColors.length 
+		? `background: 
+			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
+			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
+			radial-gradient(circle at 30% 20%, rgba(100, 100, 100, 0.4) 0%, rgba(60, 60, 60, 0.6) 40%, rgba(30, 30, 30, 0.8) 70%, rgba(10, 10, 10, 0.95) 100%),
+			linear-gradient(145deg, ${bgGradientColors.join(', ')})`
+		: null
 
 	function handleMaterialChange(index: number, description: string) {
 		currentMaterialDescription = description
@@ -35,7 +47,7 @@
 </script>
 
 <!-- Section 1: Material Demo -->
-<section id="section-0" class="h-screen relative overflow-hidden bg-black flex flex-col pb-16 metallic-background">
+<section id="section-0" class="h-screen relative overflow-hidden bg-black flex flex-col pb-16 {dynamicBackgroundStyle ? '' : 'metallic-background'}" style={dynamicBackgroundStyle || ''}>
 	<!-- FABRIC-8 Title at top with maximum width -->
 	<div class="w-full flex items-center justify-center pt-8 pb-6 px-4">
 		<h1 class="metallic-text text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-wider text-center max-w-full" style={textGradient ? `background:${textGradient};-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;` : ''}>{title}</h1>

@@ -58,23 +58,10 @@
 				
 				materialScales[materialIndex] = materialScale
 				
-				// More robust centering - use bottom-center for Y, true center for X,Z
 				const center = box.getCenter(new THREE.Vector3())
-				const min = box.min.clone()
+				materialModel.position.sub(center.multiplyScalar(materialScale))
 				
-				// Center X and Z axes using geometric center
-				materialModel.position.x = -center.x * materialScale
-				materialModel.position.z = -center.z * materialScale
-				
-				// For Y axis, position so the bottom of the object is at a reasonable height
-				// This works better for objects like shoes, rocks, etc.
-				materialModel.position.y = -min.y * materialScale
-				
-				// Wrap in a parent group for proper rotation pivot
-				const modelGroup = new THREE.Group()
-				modelGroup.add(materialModel)
-				
-				loadedMaterials[materialIndex] = modelGroup
+				loadedMaterials[materialIndex] = materialModel
 				if (materialIndex === currentMaterialIndex) {
 					switchToMaterial(materialIndex)
 				}
@@ -125,6 +112,9 @@
 		renderer.toneMapping = THREE.ACESFilmicToneMapping
 		renderer.toneMappingExposure = 1.2
 		renderer.outputColorSpace = THREE.SRGBColorSpace
+
+		// Create star field
+		createStarField()
 
 		// Simplified lighting for better performance
 		const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
@@ -303,6 +293,57 @@
 		currentModel.scale.setScalar(materialScales[currentMaterialIndex])
 		currentModel.visible = true
 		camera.position.z = 5
+	}
+
+	function createStarField() {
+		const starGeometry = new THREE.BufferGeometry()
+		const starCount = 8000 // Fewer stars for material view
+		const positions = new Float32Array(starCount * 3)
+		const colors = new Float32Array(starCount * 3)
+		
+		for (let i = 0; i < starCount; i++) {
+			// Random positions in a sphere around the scene
+			const radius = 200 + Math.random() * 300 // Closer stars for material view
+			const theta = Math.random() * Math.PI * 2
+			const phi = Math.acos(1 - 2 * Math.random())
+			
+			positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta)
+			positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta)
+			positions[i * 3 + 2] = radius * Math.cos(phi)
+			
+			// Subtle color variation - mostly white with slight blue/yellow tint
+			const colorVariation = Math.random()
+			if (colorVariation < 0.7) {
+				// White stars
+				colors[i * 3] = 1
+				colors[i * 3 + 1] = 1  
+				colors[i * 3 + 2] = 1
+			} else if (colorVariation < 0.85) {
+				// Blue-white stars
+				colors[i * 3] = 0.8
+				colors[i * 3 + 1] = 0.9
+				colors[i * 3 + 2] = 1
+			} else {
+				// Yellow-white stars
+				colors[i * 3] = 1
+				colors[i * 3 + 1] = 0.9
+				colors[i * 3 + 2] = 0.7
+			}
+		}
+		
+		starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+		starGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+		
+		const starMaterial = new THREE.PointsMaterial({
+			size: 1.5,
+			vertexColors: true,
+			transparent: true,
+			opacity: 0.6,
+			sizeAttenuation: true
+		})
+		
+		const stars = new THREE.Points(starGeometry, starMaterial)
+		scene.add(stars)
 	}
 </script>
 

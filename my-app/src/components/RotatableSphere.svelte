@@ -69,6 +69,9 @@
 		renderer.toneMappingExposure = 1
 		renderer.outputColorSpace = THREE.SRGBColorSpace
 
+		// Create star field
+		createStarField()
+
 		// Simplified lighting
 		const ambientLight = new THREE.AmbientLight(0xffffff, 0.4)
 		scene.add(ambientLight)
@@ -368,6 +371,57 @@
 			renderer.dispose()
 		}
 	})
+
+	function createStarField() {
+		const starGeometry = new THREE.BufferGeometry()
+		const starCount = 15000
+		const positions = new Float32Array(starCount * 3)
+		const colors = new Float32Array(starCount * 3)
+		
+		for (let i = 0; i < starCount; i++) {
+			// Random positions in a sphere around the scene
+			const radius = 800 + Math.random() * 400 // Stars at distance 800-1200
+			const theta = Math.random() * Math.PI * 2
+			const phi = Math.acos(1 - 2 * Math.random())
+			
+			positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta)
+			positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta)
+			positions[i * 3 + 2] = radius * Math.cos(phi)
+			
+			// Subtle color variation - mostly white with slight blue/yellow tint
+			const colorVariation = Math.random()
+			if (colorVariation < 0.7) {
+				// White stars
+				colors[i * 3] = 1
+				colors[i * 3 + 1] = 1  
+				colors[i * 3 + 2] = 1
+			} else if (colorVariation < 0.85) {
+				// Blue-white stars
+				colors[i * 3] = 0.8
+				colors[i * 3 + 1] = 0.9
+				colors[i * 3 + 2] = 1
+			} else {
+				// Yellow-white stars
+				colors[i * 3] = 1
+				colors[i * 3 + 1] = 0.9
+				colors[i * 3 + 2] = 0.7
+			}
+		}
+		
+		starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+		starGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+		
+		const starMaterial = new THREE.PointsMaterial({
+			size: 2,
+			vertexColors: true,
+			transparent: true,
+			opacity: 0.8,
+			sizeAttenuation: true
+		})
+		
+		const stars = new THREE.Points(starGeometry, starMaterial)
+		scene.add(stars)
+	}
 
 </script>
 

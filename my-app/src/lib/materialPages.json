@@ -1,6 +1,6 @@
 {
 	"steel": {
-		"title": "STEEL FIBER",
+		"title": "FABRIC-8",
 		"description": "Steel fiber 3D printed as a fabric thanks to fabric-8 technology.",
 		"materials": [
 			"/materials/metal_ingot/scene.gltf",
@@ -28,14 +28,14 @@
 		],
 		"materialDescriptions": [
 			"Basalt rock is crushed and melted at 1,500°C to form continuous fibers.",
-			"These fibers are transformed by 3D printing into complex, lightweight structures.",
+			"These fibers are transformed by 3D printing into complex, lightweight textiles.",
 			"The end product offers outstanding thermal stability for harsh environments."
 		],
 		"bgGradientColors": ["#2e2e2e", "#1a1a1a"],
 		"textGradientColors": ["#d4af37", "#c0c0c0"],
 		"originRotation": [-170, 173, 60],
 		"originFov": 1,
-		"originDescription": "Basalt fibers are produced in the volcanic ranges of the Canary Islands before shipping to our European facilities."
+		"originDescription": "Basalt fibers are enriched in the volcanic ranges of iceland and produced in the city of Reykavik-2."
 	},
 	"bamboo": {
 		"title": "BAMBOO",
@@ -54,7 +54,7 @@
 		"textGradientColors": ["#4ade80", "#16a34a"],
 		"originRotation": [360, 219, 142],
 		"originFov": 1,
-		"originDescription": "Bamboo fields in Southeast Asia provide the raw material, spun and woven locally before worldwide export."
+		"originDescription": "Bamboo fields in Indochina provide the raw material, spun and woven locally before export from Kanto to Xingiang."
 	},
 	"bottles": {
 		"title": "PLASTIC BOTTLES",
@@ -73,7 +73,7 @@
 		"textGradientColors": ["#00d4ff", "#0077ff"],
 		"originRotation": [157, 196, 321],
 		"originFov": 2,
-		"originDescription": "Collected plastic bottles from coastal cleanup operations are transformed at our North Sea recycling hub."
+		"originDescription": "Collected plastic bottles from coastal cleanup operations are transformed at our Kaapstad recycling hub."
 	},
 	"coffee": {
 		"title": "COFFEE GROUNDS",
@@ -92,6 +92,6 @@
 		"textGradientColors": ["#c69c6d", "#7f4e19"],
 		"originRotation": [204, 136, 310],
 		"originFov": 2,
-		"originDescription": "Coffee grounds are sourced from cafés across Northern Europe and processed in our Amsterdam facility."
+		"originDescription": "Coffee grounds are sourced from cafés across South America and processed in our Sao Paulo facility."
 	}
 } 

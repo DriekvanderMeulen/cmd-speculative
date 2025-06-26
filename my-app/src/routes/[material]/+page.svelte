@@ -77,7 +77,7 @@
 
 <main class="relative">
 	<!-- Navigation Bar -->
-	<nav class="fixed bottom-0 left-0 w-full z-50 metallic-nav">
+	<nav class="fixed bottom-0 left-0 w-full z-50 metallic-nav" style={bgGradient ? `background: ${bgGradient}` : ''}>
 		<div class="flex w-full h-16 relative">
 			<!-- Material Section -->
 			<button
@@ -113,6 +113,7 @@
 		materialDescriptions={config.materialDescriptions}
 		title={config.title}
 		textGradient={textGradient}
+		bgGradientColors={config.bgGradientColors}
 		bind:currentMaterialDescription
 		onScrollToSection={scrollToSection}
 	/>

@@ -62,22 +62,8 @@
 					const scale = targetSize / maxDimension
 					metalModel.scale.setScalar(scale)
 					
-					// More robust centering - use bottom-center for Y, true center for X,Z
 					const center = box.getCenter(new THREE.Vector3())
-					const min = box.min.clone()
-					
-					// Center X and Z axes using geometric center
-					metalModel.position.x = -center.x * scale
-					metalModel.position.z = -center.z * scale
-					
-					// For Y axis, position so the bottom of the object is at a reasonable height
-					// This works better for objects like shoes, rocks, etc.
-					metalModel.position.y = -min.y * scale
-					
-					// Wrap in a parent group for proper rotation pivot
-					const modelGroup = new THREE.Group()
-					modelGroup.add(metalModel)
-					metalModel = modelGroup
+					metalModel.position.sub(center.multiplyScalar(scale))
 					
 					scene.add(metalModel)
 				},

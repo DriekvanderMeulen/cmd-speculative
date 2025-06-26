@@ -1,0 +1,8 @@
+Model Information:
+* title:	Thermoboots
+* source:	https://sketchfab.com/3d-models/thermoboots-6c4be8233ebb48ff8c4e25b8fa60b448
+* author:	NateSquared (https://sketchfab.com/NateSquared)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chainmail
+* source:	https://sketchfab.com/3d-models/chainmail-bf84f17f9ec34a04819620d03f2408fa
+* author:	4145K4N (https://sketchfab.com/4145K4N)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chainmail" (https://sketchfab.com/3d-models/chainmail-bf84f17f9ec34a04819620d03f2408fa) by 4145K4N (https://sketchfab.com/4145K4N) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

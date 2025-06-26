@@ -1,0 +1,7 @@
+[
+	{ "time": 0, "fov": 90, "position": [0, 0, 0] },
+	{ "time": 2.5, "fov": 45, "position": [-90, 90, 20] },
+	{ "time": 5, "fov": 1, "position": [-175, 186, 50] }
+] 
+
+

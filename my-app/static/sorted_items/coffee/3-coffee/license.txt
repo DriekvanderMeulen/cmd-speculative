@@ -1,0 +1,11 @@
+Model Information:
+* title:	Japanese female shoe
+* source:	https://sketchfab.com/3d-models/japanese-female-shoe-d69501fb953349a7ad5e1843d2aabf33
+* author:	Alone dev games (https://sketchfab.com/cristopher.faundez)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Japanese female shoe" (https://sketchfab.com/3d-models/japanese-female-shoe-d69501fb953349a7ad5e1843d2aabf33) by Alone dev games (https://sketchfab.com/cristopher.faundez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

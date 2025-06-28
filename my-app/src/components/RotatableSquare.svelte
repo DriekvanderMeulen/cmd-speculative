@@ -113,8 +113,7 @@
 		renderer.toneMappingExposure = 1.2
 		renderer.outputColorSpace = THREE.SRGBColorSpace
 
-		// Create star field
-		createStarField()
+		// Star field removed for material scenes
 
 		// Simplified lighting for better performance
 		const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)

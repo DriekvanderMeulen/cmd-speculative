@@ -65,7 +65,18 @@
 			0 1px 0 rgba(255, 255, 255, 0.3),
 			0 1px 2px rgba(0, 0, 0, 0.8);
 	}
-
+	.metallic-text-link {
+		font-family: 'Orbitron', monospace;
+		background: linear-gradient(135deg, #e8e8e8, #c0c0c0);
+		background-size: 200% 100%;
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: 
+			0 1px 0 rgba(79, 135, 255, 0.3),
+			0 1px 2px rgba(0, 0, 0, 0.8);
+	}
+	
 	.metallic-svg {
 		filter: drop-shadow(0 0 0.5rem rgba(34, 197, 94, 0.5));
 		fill: url(#greenGradient);
@@ -131,11 +142,7 @@ body {
 	overflow-x: hidden;
 	touch-action: pan-y;
 	-webkit-overflow-scrolling: touch;
-	background: 
-		repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 2px),
-		repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 2px),
-		radial-gradient(circle at 30% 20%, rgba(100, 100, 100, 0.8) 0%, rgba(60, 60, 60, 0.9) 40%, rgba(30, 30, 30, 0.95) 70%, rgba(10, 10, 10, 1) 100%),
-		#0a0a0a;
+	background: #0a0a0a;
 }
 
 /* Prevent mobile zoom */
@@ -160,5 +167,21 @@ input, select, textarea { font-size: 1rem; }
 	box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.6), inset 0 -3px 6px rgba(0, 0, 0, 0.7);
 }
 html { scrollbar-width: thin; scrollbar-color: rgba(120, 120, 120, 0.8) rgba(30, 30, 30, 0.9); }
+
+/* Metallic text selection */
+::selection {
+  /* Metallic shimmer background */
+  background: lightgray;
+  /* Force readable foreground even for gradient-clipped text */
+  color: #111;
+  -webkit-text-fill-color: #111;
+  text-shadow: none;
+}
+
+/* Firefox fallback (no gradient support) */
+::-moz-selection {
+  background: #d5d5d5;
+  color: #111;
+}
 
 

@@ -35,8 +35,6 @@
 	// Build dynamic background gradient
 	$: dynamicBackgroundStyle = bgGradientColors && bgGradientColors.length 
 		? `background: 
-			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
-			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
 			radial-gradient(circle at 30% 20%, rgba(100, 100, 100, 0.4) 0%, rgba(60, 60, 60, 0.6) 40%, rgba(30, 30, 30, 0.8) 70%, rgba(10, 10, 10, 0.95) 100%),
 			linear-gradient(145deg, ${bgGradientColors.join(', ')})`
 		: null
@@ -74,8 +72,6 @@
 <style>
 	.metallic-background {
 		background: 
-			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
-			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
 			radial-gradient(circle at 30% 20%, rgba(100, 100, 100, 0.4) 0%, rgba(60, 60, 60, 0.6) 40%, rgba(30, 30, 30, 0.8) 70%, rgba(10, 10, 10, 0.95) 100%),
 			linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%),
 			#000000;

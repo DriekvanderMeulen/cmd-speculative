@@ -428,6 +428,6 @@
 <div class="w-full h-full">
 	<canvas
 		bind:this={canvas}
-		class="w-full h-full cursor-grab active:cursor-grabbing"
+		class={`w-full h-full ${allowManualRotation ? 'cursor-grab active:cursor-grabbing' : 'cursor-default'}`}
 	></canvas>
 </div> 

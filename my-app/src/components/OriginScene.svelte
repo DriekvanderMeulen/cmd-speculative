@@ -19,19 +19,15 @@
 </script>
 
 <!-- Section 3: Origin -->
-<section id="section-2" class="h-screen relative overflow-hidden bg-black">
+<section id="section-2" class="h-screen relative overflow-hidden bg-black stars-background">
 	<div class="absolute top-[15%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
 		<h1 class="metallic-text text-3xl sm:text-4xl lg:text-6xl font-black tracking-wider whitespace-nowrap">ORIGIN</h1>
 	</div>
 	
 	<div class="w-full h-full relative z-10">
-		<RotatableSphere scrollProgress={cubeScrollProgress} {startAnimation} endRotation={originRotation} endFov={originFov} on:animationComplete={() => animationDone = true} />
+		<RotatableSphere scrollProgress={cubeScrollProgress} {startAnimation} endRotation={originRotation} endFov={originFov} allowManualRotation={false} on:animationComplete={() => animationDone = true} />
 		
-		{#if cubeScrollProgress <= 0.5}
-			<div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-sm opacity-70 text-center z-20 pointer-events-none px-4">
-				Drag to rotate the planet
-			</div>
-		{:else}
+		{#if cubeScrollProgress > 0.5}
 			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-center z-20 pointer-events-none px-4">
 				<h2 class="text-2xl lg:text-3xl font-bold mb-4">Planet Mastered</h2>
 				<p class="text-lg opacity-80">Your journey continues</p>
@@ -49,4 +45,14 @@
 			</div>
 		{/if}
 	</div>
-</section> 
+</section>
+
+<style>
+	.stars-background {
+		background: 
+			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 2px),
+			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 2px),
+			radial-gradient(circle at 30% 20%, rgba(100, 100, 100, 0.8) 0%, rgba(60, 60, 60, 0.9) 40%, rgba(30, 30, 30, 0.95) 70%, rgba(10, 10, 10, 1) 100%),
+			#000000;
+	}
+</style> 

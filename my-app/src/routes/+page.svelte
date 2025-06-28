@@ -118,6 +118,9 @@
 							<p class="metallic-text-small text-base leading-relaxed mt-4">
 								Why Svelte? In a 3D-heavy, animation-driven site compile-time reactivity matters: Svelte ejects its compiler output into lean vanilla JS, so there's no virtual-DOM diff cost when the canvas ticks at 60 fps. That frees CPU budget for Three.js while keeping bundle sizes modest compared with React/Next's runtime. Because SvelteKit ships file-based routing and first-class SSR by default, we still get SEO and progressive enhancement without wrestling with React hydration mismatches. In short: fewer kilobytes, fewer abstractions, smoother frames.
 							</p>
+							<a href="https://github.com/DriekvanderMeulen/cmd-speculative" target="_blank" rel="noopener noreferrer" class="metallic-text-link text-xs leading-relaxed underline">
+								Github Repo
+							</a>
 						</div>
 					</div>
 				</div>

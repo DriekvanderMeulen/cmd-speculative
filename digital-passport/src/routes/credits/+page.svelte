@@ -93,7 +93,7 @@
 		}
 	]
 
-	// Project team data with headshots located in /static/team
+	// Project team data
 	const teamMembers = [
 		{
 			name: 'Lauryn Walpole',
@@ -114,6 +114,50 @@
 			image: '/team/team_driek.jpg'
 		}
 	]
+
+	// Timeline graphics credits (Unsplash)
+	const timelineGraphicsCredits = [
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1524558645350-1e0016260acf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/1e0016260acf'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1589262804704-c5aa9e6def89?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/c5aa9e6def89'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1678118315265-61e62637f4ae?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/61e62637f4ae'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1598935898639-81586f7d2129?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/81586f7d2129'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1551552437-1aa94bdee7de?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/1aa94bdee7de'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1602011975975-cb864538bb84?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/cb864538bb84'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/450d8e3c9fce'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1454789476662-53eb23ba5907?q=80&w=1504&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+			photoUrl: 'https://unsplash.com/photos/typhoon-i9w4Uy1pU-s'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1644392052343-7f759d588aa2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/7f759d588aa2'
+		},
+		{
+			imageUrl: 'https://images.unsplash.com/photo-1638604587609-fbb8469f4234?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
+			photoUrl: 'https://unsplash.com/photos/fbb8469f4234'
+		}
+	]
 </script>
 
 <div class="min-h-screen bg-black text-white">
@@ -125,7 +169,7 @@
                 <a href="/" class="block md:absolute md:top-8 md:left-8 px-6 py-3 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105 border mb-12 border-gray-500">
                  ← Back to Home
              </a>
-				<h1 class="metallic-text text-4xl sm:text-6xl md:text-7xl font-black tracking-wider mb-8">				
+				<h1 class="metallic-text text-4xl sm:text-6xl md:text-7xl font-black tracking-wider mb-8"> 
 					CREDITS
 				</h1>
 				<p class="metallic-text-small text-xl leading-relaxed max-w-3xl mx-auto mb-8">
@@ -155,13 +199,14 @@
 					{/each}
 				</div>
 			</section>
+
 			<!-- Sketchfab Model Credits -->
 			<section>
 				<h2 class="metallic-text text-2xl sm:text-3xl font-bold mb-12 text-center">
 					3D Model Artists
 				</h2>
 				<p class="metallic-text-small text-center mb-12 max-w-4xl mx-auto">
-					All 3D models used in this project are sourced from Sketchfab and are licensed under CC-BY-4.0. 
+					All 3D models used in this project are sourced from Sketchfab and are licensed under CC-BY-4.0.
 					We're grateful to these talented artists for sharing their work with the community.
 				</p>
 				
@@ -171,21 +216,12 @@
 							<div class="model-content">
 								<h3 class="metallic-text text-lg font-bold mb-2">{credit.title}</h3>
 								<p class="metallic-text-small text-sm mb-4">
-									by <a href={credit.profileUrl} target="_blank" rel="noopener noreferrer" 
-										  class="text-blue-400 hover:text-blue-300 transition-colors underline">
-										{credit.author}
-									</a>
+									by <a href={credit.profileUrl} target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors underline">{credit.author}</a>
 								</p>
 								<p class="metallic-text-small text-xs mb-4">
-									Licensed under 
-									<a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer"
-									   class="text-blue-400 hover:text-blue-300 transition-colors underline">
-										CC-BY-4.0
-									</a>
+									Licensed under <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors underline">CC-BY-4.0</a>
 								</p>
-								<a href={credit.modelUrl} target="_blank" rel="noopener noreferrer"
-								   class="inline-block px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 
-										  text-white text-xs font-medium rounded transition-all duration-300 transform group-hover:scale-105 border border-gray-500">
+								<a href={credit.modelUrl} target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white text-xs font-medium rounded transition-all duration-300 transform group-hover:scale-105 border border-gray-500">
 									View on Sketchfab
 								</a>
 							</div>
@@ -194,19 +230,37 @@
 				</div>
 			</section>
 
+			<!-- Timeline Graphics Credits -->
+			<section class="mt-20">
+				<h2 class="metallic-text text-2xl sm:text-3xl font-bold mb-12 text-center">Timeline Graphics</h2>
+				<p class="metallic-text-small text-center mb-12 max-w-4xl mx-auto">Images used for the interactive timeline are provided by generous photographers on Unsplash.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{#each timelineGraphicsCredits as credit}
+						<div class="model-credit-card group overflow-hidden">
+							<a href={credit.photoUrl} target="_blank" rel="noopener noreferrer" class="block">
+								<img src={credit.imageUrl} alt="Unsplash timeline graphic" class="w-full h-40 object-cover mb-3 rounded" />
+							</a>
+							<p class="metallic-text-small text-xs text-center">
+								Photo on <a href={credit.photoUrl} target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">Unsplash</a>
+							</p>
+						</div>
+					{/each}
+				</div>
+			</section>
+
 			<!-- Footer -->
 			<div class="text-center mt-20 pt-16 border-t border-gray-700">
-				<p class="metallic-text-small text-sm">
-					© 2024 · Built with love and creative commons content
-				</p>
+				<p class="metallic-text-small text-sm">© 2024 · Built with love and creative commons content</p>
 			</div>
+	
 		</div>
 	</div>
 </div>
 
 <style>
 	.metallic-background {
-		background: 
+		background:
 			repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
 			repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 2px),
 			radial-gradient(circle at 30% 20%, rgba(100, 100, 100, 0.4) 0%, rgba(60, 60, 60, 0.6) 40%, rgba(30, 30, 30, 0.8) 70%, rgba(10, 10, 10, 0.95) 100%),
@@ -266,29 +320,6 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-	}
-
-	.project-description-card {
-		background: rgba(255, 255, 255, 0.03);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 20px;
-		padding: 3rem;
-		backdrop-filter: blur(10px);
-		transition: all 0.3s ease;
-	}
-
-	.project-description-card:hover {
-		background: rgba(255, 255, 255, 0.05);
-		border-color: rgba(255, 255, 255, 0.15);
-	}
-
-	.project-section {
-		padding: 1.5rem 0;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-	}
-
-	.project-section:last-child {
-		border-bottom: none;
 	}
 
 	/* Team images */

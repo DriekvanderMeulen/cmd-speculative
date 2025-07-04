@@ -2,21 +2,27 @@ import { useEffect, useRef, useState } from 'react'
 
 interface SlideshowProps {
 	images: Array<string>
-	bufferSrc?: string // optional path for buffer image
 }
 
-export default function Slideshow({ images, bufferSrc = '/posters/fabric-8.png' }: SlideshowProps) {
+export default function Slideshow({ images }: SlideshowProps) {
 	const [index, setIndex] = useState(0)
 	const [prevIndex, setPrevIndex] = useState<number | null>(null)
 	const timer = useRef<NodeJS.Timeout | null>(null)
+	// Audio element for keyboard-controlled playback
+	const audioRef = useRef<HTMLAudioElement | null>(null)
 
-	// Build extended array with buffer inserted after each poster
-	const extended = images.flatMap((img) => [img, bufferSrc])
+	// Use only the provided images (buffer removed)
+	const extended = images
+
+	// Initialize the audio element once on mount
+	useEffect(() => {
+		audioRef.current = new Audio('/audio.wav')
+	}, [])
 
 	// Advance automatically every 30 s
 	useEffect(() => {
 		if (timer.current) clearTimeout(timer.current)
-		timer.current = setTimeout(() => advance(false), 30_000)
+		timer.current = setTimeout(() => advance(), 30_000)
 		return () => {
 			if (timer.current) clearTimeout(timer.current)
 		}
@@ -26,23 +32,53 @@ export default function Slideshow({ images, bufferSrc = '/posters/fabric-8.png' 
 	useEffect(() => {
 		function handleKeydown(event: KeyboardEvent) {
 			if (event.key.toLowerCase() === 'm') {
-				advance(true)
+				advance()
 			}
 		}
 		window.addEventListener('keydown', handleKeydown)
 		return () => {
 			window.removeEventListener('keydown', handleKeydown)
 		}
-	}, [extended.length, index])
+	}, [extended.length, index])	
 
-	// If skipBuffer is true we move two steps to skip buffer when currently on poster,
-	// or one step when currently on buffer.
-	function advance(skipBuffer: boolean) {
+	// Keyboard controls for audio playback (r, l, p)
+	useEffect(() => {
+		function handleAudioKeydown(event: KeyboardEvent) {
+			const audio = audioRef.current
+			if (!audio) return
+			const key = event.key.toLowerCase()
+
+			if (key === 'r') {
+				// Restart from the beginning and play
+				audio.pause()
+				audio.currentTime = 0
+				audio.play().catch(() => undefined)
+			} else if (key === 'l') {
+				// Pause playback
+				audio.pause()
+			} else if (key === 'p') {
+				// Play from start if never started, otherwise resume if paused
+				if (audio.paused) {
+					// If the audio hasn't started yet (currentTime ~ 0), start from the top
+					if (audio.currentTime === 0) {
+						audio.play().catch(() => undefined)
+					} else {
+						// Resume without resetting currentTime
+						audio.play().catch(() => undefined)
+					}
+				}
+			}
+		}
+		window.addEventListener('keydown', handleAudioKeydown)
+		return () => {
+			window.removeEventListener('keydown', handleAudioKeydown)
+		}
+	}, [])
+
+	// Advance to the next image
+	function advance() {
 		setPrevIndex(index)
-		setIndex((cur) => {
-			const next = cur + (skipBuffer ? 2 : 1)
-			return next % extended.length
-		})
+		setIndex((cur) => (cur + 1) % extended.length)
 		// clear prev after animation duration
 		setTimeout(() => setPrevIndex(null), 700)
 	}
